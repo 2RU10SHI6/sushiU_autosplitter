@@ -20,3 +20,8 @@ isLoading
 {
     return current.mouse == 0;
 }
+
+reset
+{
+    return current.souls == 0 && current.garis == 0 && old.layers == 0 && current.layers == 2 && old.mouse == 0 && current.mouse != 0;
+}
