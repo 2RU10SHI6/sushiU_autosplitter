@@ -6,6 +6,11 @@ state("Sushi_U-Win64-Shipping")
     double mouse : "Sushi_U-Win64-Shipping.exe", 0x068C6528, 0x1B8, 0x268;
 }
 
+startup
+{
+    settings.Add("tutorial",false,"Split when clearing tutorial");
+}
+
 start
 {
     return current.souls == 0 && current.garis == 0 && old.layers == 2 && current.layers == 0;
@@ -13,6 +18,9 @@ start
 
 split
 {
+    if(settings["tutorial"] && old.garis == 0 && current.garis > 0 && current.souls == 0 && old.mouse != 0){
+        return true;
+    }
     return old.souls + 1 == current.souls;
 }
 
